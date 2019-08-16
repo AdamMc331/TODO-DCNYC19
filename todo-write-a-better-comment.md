@@ -471,7 +471,7 @@ val firstType: PokemonType?
 
 ---
 
-# With references
+# With References
 
 [.code-highlight: 2, 4]
 ```kotlin
@@ -496,6 +496,9 @@ val firstType: PokemonType?
 ---
 
 # Be Consistent With Your Language
+
+- When documenting methods that return booleans, try to always describe the true condition
+- Don't describe the true response for some methods and the false response for others
 
 ---
 
