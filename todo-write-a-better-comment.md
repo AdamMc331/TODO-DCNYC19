@@ -93,7 +93,7 @@ val usersToDisplay = userList.filter { user ->
 
 ---
 
-# Some Time Later
+![inline](threeweekslater.png)
 
 ---
 
@@ -108,7 +108,7 @@ val usersToDisplay = userList.filter { user ->
 
 ---
 
-# Some Time Later
+![inline](muchlater.jpg)
 
 ---
 
@@ -499,6 +499,46 @@ val firstType: PokemonType?
 
 - When documenting methods that return booleans, try to always describe the true condition
 - Don't describe the true response for some methods and the false response for others
+
+---
+
+# Inconsistent Documentation
+
+```kotlin
+/**
+ * @return True if the user has signed on within the last 24 hours.
+ */
+fun isActive(): Boolean {
+    // ...
+}
+
+/**
+ * @return False if the user is not a staff member for our team.
+ */ 
+fun isStaff(): Boolean {
+    // ...
+}
+```
+
+---
+
+# Consistent Documentation
+
+```kotlin
+/**
+ * @return True if the user has signed on within the last 24 hours.
+ */
+fun isActive(): Boolean {
+    // ...
+}
+
+/**
+ * @return True if the user is a staff member of our team.
+ */ 
+fun isStaff(): Boolean {
+    // ...
+}
+```
 
 ---
 
