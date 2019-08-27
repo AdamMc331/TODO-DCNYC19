@@ -37,7 +37,7 @@ build-lists: true
 
 # To Provide Additional Insight
 
-```
+```kotlin
 /**
  * There is certain functionality that we need to be consistent 
  * in all WebViews of our app.
@@ -409,14 +409,14 @@ public interface DefaultBehavior {
 
 # Reference Definitions
 
-- Helps survive refactoring of a field
-- IDE may let you click into a reference
+- Helps survive refactoring of a definition
+- IDE lets you click into references
+- Will create links for auto generated
 
 ---
 
 # Without References
 
-[.code-highlight: 2, 4]
 ```kotlin
 /**
  * Retrieves the primary Type for a Pokemon.
@@ -440,7 +440,6 @@ val firstType: PokemonType?
 
 # With References
 
-[.code-highlight: 2, 4]
 ```kotlin
 /**
  * Retrieves the primary [Type] for a [Pokemon].
