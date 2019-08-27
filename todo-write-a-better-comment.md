@@ -137,6 +137,8 @@ val usersToDisplay = userList.filter { user ->
 
 # The Comments Tell Me Everything The Code Does
 
+[.code-highlight: 1, 8-9]
+[.code-highlight: 2-7]
 ```kotlin
 interface AccountDAO {
     /**
@@ -153,6 +155,7 @@ interface AccountDAO {
 
 # Remove What We Don't Need
 
+[.code-highlight: 2-4]
 ```kotlin
 interface AccountDAO {
     /**
@@ -274,6 +277,7 @@ private val updatedQuestions: MutableMap<Long, Question> = HashMap()
 
 # These Are All Redundant
 
+[.code-highlight: 2-8]
 ```kotlin
 class Pokedex {
     /**
@@ -292,6 +296,7 @@ class Pokedex {
 
 # We Can Provide Examples
 
+[.code-highlight: 2-8]
 ```kotlin
 class Pokedex {
     /**
