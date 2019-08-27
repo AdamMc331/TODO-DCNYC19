@@ -16,9 +16,10 @@ build-lists: true
 
 ---
 
-# It Also Doesn't Need To Be This Harsh
-
 > "When you need to write a comment, it usually means that you have failed to write code that was expressive enough. You should feel a sharp pain in your stomach every time you write a comment."
+--
+
+^ Unemphathetic, not a culture we want to cultivate, discouraging 
 
 ---
 
@@ -26,17 +27,17 @@ build-lists: true
 
 ---
 
-# We Need To Stop Writing _Bad_ Comments
+# We Need To Stop Writing **Bad** Comments
 
 ---
 
-# Why Do We Have Comments, Anyways?
+# Why Do We Have Comments?
 
 ---
 
-# They Provide Additional Insight
+# To Provide Additional Insight
 
-```kotlin
+```
 /**
  * There is certain functionality that we need to be consistent 
  * in all WebViews of our app.
@@ -48,7 +49,7 @@ class BaseWebViewClient(...) : WebViewClient
 
 ---
 
-# They Can Tell You Why The Programmer Did Something
+# To Explain Why We Did Something
 
 ```kotlin
 // The API returns the time in seconds
@@ -58,7 +59,7 @@ val timeInMillis = response.time * 1000
 
 ---
 
-# They Can Provide Documentation
+# To Provide Documentation
 
 ```kotlin
 interface AccountDAO {
@@ -112,7 +113,7 @@ val usersToDisplay = userList.filter { user ->
 
 ---
 
-# Who is right? 🤔
+# Which Is Right? 🤔
 
 ```kotlin
 // We only want active users
@@ -123,22 +124,20 @@ val usersToDisplay = userList.filter { user ->
 
 ---
 
-# Managing Code And Comments Is Difficult
+# Three Types Of Comments
 
-- Try to avoid them by default
-- Don't avoid comments just for avoidance sake
-- Ask yourself if there's some way to avoid it
-
----
-
-# Avoid Redundant Comments
+- Comments that are unnecessary
+- Comments that are unhelpful
+- Comments that are helpful
 
 ---
 
-# The Comments Tell Me Everything The Code Does
+# Unnecessary Comments
 
-[.code-highlight: 1, 8-9]
-[.code-highlight: 2-7]
+---
+
+Bad: Repeating the code
+
 ```kotlin
 interface AccountDAO {
     /**
@@ -153,9 +152,8 @@ interface AccountDAO {
 
 ---
 
-# Remove What We Don't Need
+Good: Remove what we don't need
 
-[.code-highlight: 2-4]
 ```kotlin
 interface AccountDAO {
     /**
@@ -165,12 +163,7 @@ interface AccountDAO {
 }
 ```
 
----
-
-# An Exception
-
-- If you're writing a library or public facing API, document everything
-- More on this later
+^ Exception: Public API
 
 ---
 
@@ -178,7 +171,7 @@ interface AccountDAO {
 
 ---
 
-# Sometimes We Try To Clarify Behavior
+Good: Clarifying Behavior
 
 ```kotlin
 // Saves data to database
@@ -187,9 +180,7 @@ fun saveData() {
 }
 ```
 
----
-
-# We Can Write More Expressive Method Names
+Better: More Expressive Code
 
 ```kotlin
 fun saveDataToDatabase() {
@@ -199,7 +190,7 @@ fun saveDataToDatabase() {
 
 ---
 
-# Sometimes We Use Them To Break Up A Method[^1]
+Good: Break Up Method
 
 ```kotlin
 fun transferMoney(fromAccount: Account, toAccount: Account, amount: Double) {
@@ -211,11 +202,7 @@ fun transferMoney(fromAccount: Account, toAccount: Account, amount: Double) {
 }
 ```
 
-[^1]: This is also bad because methods should do just one thing.
-
----
-
-# We Should View This As An Opportunity To Extract Functionality
+Better: Extract Functionality
 
 ```kotlin
 fun transferMoney(fromAccount: Account, toAccount: Account, amount: Double) {
@@ -230,19 +217,15 @@ fun transferMoney(fromAccount: Account, toAccount: Account, amount: Double) {
 
 - We removed any redundant comments
 - We changed code to avoid comments
-- But we still feel the need to clarify what we did, or we're working on a public API
+- How do we ensure the comments we do write are helpful?
 
 ---
 
-# How Do I Ensure The Comments I Do Write Are Helpful?
+# Comments Tell You **Why**, Code Tells You **What**
 
 ---
 
-# Comments Tell You _Why_, Code Tells You _What_
-
----
-
-# This Comment Only Tells Me What
+# Comments That Tell Us What
 
 ```kotlin
 /**
@@ -253,7 +236,7 @@ private val updatedQuestions: MutableMap<Long, Question> = HashMap()
 
 ---
 
-# We Should Clarify Why We Need This Value
+# Comments That Tell Us Why
 
 ```kotlin
 /**
@@ -271,20 +254,16 @@ private val updatedQuestions: MutableMap<Long, Question> = HashMap()
 
 ---
 
-# Comments With Examples Are Helpful
+# Comments With Examples
 
 ---
 
-# These Are All Redundant
+Okay: No Examples
 
-[.code-highlight: 2-8]
 ```kotlin
 class Pokedex {
     /**
-     * Adds a pokemon to this pokedex.
-     * 
      * @param[name] The name of the Pokemon.
-     * @param[number] The number of the Pokemon.
      */
     fun addPokemon(name: String, number: Int) {
 
@@ -292,18 +271,12 @@ class Pokedex {
 }
 ```
 
----
+Better: With Examples
 
-# We Can Provide Examples
-
-[.code-highlight: 2-8]
 ```kotlin
 class Pokedex {
     /**
-     * Adds a pokemon to this Pokedex.
-     * 
      * @param[name] The name of the Pokemon (Bulbasaur, Ivysaur, Venusaur).
-     * @param[number] The number of the Pokemon (001, 002, 003).
      */
     fun addPokemon(name: String, number: Int) {
 
@@ -313,11 +286,11 @@ class Pokedex {
 
 ---
 
-# Links To External Resources Are Helpful
+# Links To Additional Resources
 
 ---
 
-# For Things We Find On StackOverflow
+# To StackOverflow
 
 ```kotlin
 /**
@@ -336,7 +309,7 @@ class NonSwipeableViewPager(
 
 ---
 
-# For Internal Documentation
+# To Internal Documentation
 
 ```kotlin
 /**
@@ -351,7 +324,7 @@ class SomeFeatureFragment : Fragment() {
 
 ---
 
-# For Work Arounds Of Reported Issues
+# To Reported Issues
 
 ```kotlin
 /**
@@ -366,25 +339,17 @@ class MyCustomCarousel : Carousel() {
 }
 ```
 
+^ Work Arounds Or Otherwise
+
 ---
 
-# Actionable Comments Are Helpful
+# Actionable Comments
 
 ---
 
 # //TODO: Comments
 
----
-
-# Two Options For //TODO: Comments
-
----
-
-# Option 1: Just Do It
-
----
-
-# Option 2: Link To External Issue Tracker
+If you're not going to do it now, create accountability with links to issue trackers.
 
 ```kotlin
 //TODO: Consolidate both of these classes
@@ -397,11 +362,11 @@ class MainActivity : BaseActivity() {
 
 ---
 
-# Deprecation Comments Can Be Actionable
+# Deprecation Comments
 
 ---
 
-# Don't Do This
+Bad: No Explanation
 
 ```kotlin
 @Deprecated
@@ -410,9 +375,7 @@ public interface DefaultBehavior {
 }
 ```
 
----
-
-# Tell People What The Replacement Is
+Better: Provide Alternative
 
 ```kotlin
 /**
@@ -430,22 +393,21 @@ public interface DefaultBehavior {
 
 ---
 
-# Try To Summarize Large Sections Of Code
-
-![inline](code_summary.png)
-
----
-
 # ASCII Art?[^2]
 
 ![inline](ascii_comment.png)
-
 
 [^2]: https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/chip/ChipDrawable.java#L130-L151
 
 ---
 
-# Reference Classes/Methods/Properties
+# Summarize Large Sections Of Code
+
+![inline](code_summary.png)
+
+---
+
+# Reference Definitions
 
 - Helps survive refactoring of a field
 - IDE may let you click into a reference
@@ -500,7 +462,7 @@ val firstType: PokemonType?
 
 ---
 
-# Be Consistent With Your Language
+# Use Consistent Language
 
 - When documenting methods that return booleans, try to always describe the true condition
 - Don't describe the true response for some methods and the false response for others
@@ -549,14 +511,14 @@ fun isStaff(): Boolean {
 
 # Recap
 
-- Avoid redundant comments
-- Try to refactor your code to avoid a comment
-- If you have to write a comment, try your best to be helpful
- - Explain _why_
+- Remove redundant comments
+- Write expressive code
+- Write helpful comments
+ - Explain **why**
  - Provide examples
- - Be actionable
+ - Give guidance
  - Leverage IDE tools
- - Be consistent
+ - Use consistent language
 
 ---
 
