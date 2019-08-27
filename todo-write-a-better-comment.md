@@ -411,7 +411,7 @@ public interface DefaultBehavior {
 
 - Helps survive refactoring of a definition
 - IDE lets you click into references
-- Will create links for auto generated
+- Will create links for auto generated documentation
 
 ---
 
@@ -523,4 +523,4 @@ fun isStaff(): Boolean {
 
 # Thank You!
 
-## https://github.com/AdamMc331/TODO-DCNYC19
+### https://github.com/AdamMc331/TODO-DCNYC19
